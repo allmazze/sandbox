@@ -7,6 +7,9 @@ node() {
 
     stage('Build') {
         sh "echo Build in progress"
+        sh "apk add --update docker openrc"
+        sh "service docker start"
+        sh "service docker status"
         sh "echo Build complete"
     }
 
