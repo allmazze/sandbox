@@ -7,7 +7,7 @@ node() {
 
     stage('Build') {
         sh "echo Build in progress"
-        sh "apt-get update"
+        sh "sudo apt-get update"
         sh "sudo apt-get -y install apt-transport-https ca-certificates curl"
         sh "curl -fsSL https://get.docker.com -o get-docker.sh"
         sh "sudo sh get-docker.sh"
