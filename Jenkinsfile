@@ -7,9 +7,10 @@ node() {
 
     stage('Build') {
         sh "echo Build in progress"
-        sh "apk add --update docker openrc"
-        sh "service docker start"
-        sh "service docker status"
+        sh "apt-get update"
+        sh "sudo apt-get -y install apt-transport-https ca-certificates curl"
+        sh "curl -fsSL https://get.docker.com -o get-docker.sh"
+        sh "sudo sh get-docker.sh"
         sh "echo Build complete"
     }
 
