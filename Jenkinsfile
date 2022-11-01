@@ -7,15 +7,14 @@ node() {
 
     stage('Build') {
         sh "echo Build in progress"
-        sh "sudo apt-get update"
-        sh "sudo apt-get -y install apt-transport-https ca-certificates curl"
-        sh "curl -fsSL https://get.docker.com -o get-docker.sh"
-        sh "sudo sh get-docker.sh"
+        sh "docker build -t echo-server:1.0 ."
         sh "echo Build complete"
     }
 
     stage('Test') {
         sh "echo Tests in progress"
+        sh "docker run echo-server:1.0"
+        sh "curl http://localhost:3000"
         sh "echo Tests complete"
     }
 
