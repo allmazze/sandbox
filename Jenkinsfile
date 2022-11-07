@@ -1,11 +1,21 @@
 pipeline {
     agent {
-        docker { image 'node:3.16-alpine' }
+        docker { image 'alpine:3.16' }
     }
     stages {
-        stage('Test') {
+        stage('Docker check') {
             steps {
-                sh 'node --version'
+                sh 'echo $USER'
+                sh 'pwd'
+                sh 'docker version'
+                deleteDir()
+            }
+        }
+        stage('Checkout') {
+            steps {
+                git branch: 'master',
+                    url: 'https://github.com/allmazze/sandbox.git'
+                    sh 'pwd'
             }
         }
     }
