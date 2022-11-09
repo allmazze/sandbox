@@ -10,7 +10,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'master',
-                    url: 'ssh://git@git.namecheap.net/~vadymbezditnyi/vadymbezditnyi_hw.git'
+                    url: 'https://github.com/allmazze/sandbox.git'
                     sh 'pwd'
                     sh 'ls -a'
             }
